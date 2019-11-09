@@ -12,6 +12,8 @@ function setup() {
 
 function draw() {
   background(0);
+
+  translate(width/2 - mainBlob.pos.x,height/2 - mainBlob.pos.y)
   mainBlob.show();
   mainBlob.update();
   blobsArray.forEach(element => {

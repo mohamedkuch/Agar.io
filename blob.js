@@ -3,9 +3,18 @@ function Blob(x, y, radius) {
   this.r = radius;
 
   this.update = function() {
-    var vel = createVector(mouseX, mouseY);
-    vel.sub(this.pos);
+    var vel = createVector(mouseX - width/2,mouseY - height/2);
     vel.setMag(3);
+
+
+    var centerVector = createVector(width/2, height/2);
+    var mouseVector = createVector(mouseX, mouseY );
+
+    let distance = centerVector.dist(mouseVector);
+    if(distance < this.r){
+      let velReg = this.r / distance;
+      vel.div(velReg);
+    }
     this.pos.add(vel);
   };
 
